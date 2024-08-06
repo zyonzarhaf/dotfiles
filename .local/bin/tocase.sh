@@ -35,7 +35,7 @@ rename_file() {
 }
 
 to_camelcase() {
-    rename_file "$1" 's/[-_]+/ /g; s/^ +| +$//g; s/([a-z])([A-Z])/\1 \2/g; s/\b([a-z])/\U\1/g; s/([A-Z]+)([A-Z][a-z])/\1 \2/g; s/\B([A-Z])/\L\1/g; s/^[A-Z]/\L&/; s/ //g'
+    rename_file "$1" 's/[^a-zA-Z0-9]+/ /g; s/^ +| +$//g; s/([a-z])([A-Z])/\1 \2/g; s/\b([a-z])/\U\1/g; s/([A-Z]+)([A-Z][a-z])/\1 \2/g; s/\B([A-Z])/\L\1/g; s/^[A-Z]/\L&/; s/ //g'
 }
 
 to_snakecase() {
