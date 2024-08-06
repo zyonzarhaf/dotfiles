@@ -39,7 +39,7 @@ to_camelcase() {
 }
 
 to_snakecase() {
-    rename_file "$1" 's/[- ]+/_/g; s/^_+|_+$//g; s/([a-z])([A-Z])/\1_\2/g; s/([A-Z]+)([A-Z][a-z])/\1_\2/g; s/_+/_/g; s/([A-Z])/\L\1/g'
+    rename_file "$1" 's/[^a-zA-Z0-9]+/_/g; s/^_+|_+$//g; s/([a-z])([A-Z])/\1_\2/g; s/([A-Z]+)([A-Z][a-z])/\1_\2/g; s/_+/_/g; s/([A-Z])/\L\1/g'
 }
 
 
