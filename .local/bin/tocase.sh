@@ -40,7 +40,7 @@ to_camelcase() {
 }
 
 to_snakecase() {
-  rename_file "$1" 's/[^[:alnum:]]/ /g; s/^ +//; s/ +$//; s/([[:alnum:]])/\L\1/g; s/ (\w+$)/\.\1/; s/ +/_/g'
+  rename_file "$1" 's/[^[:alnum:]]/ /g; s/^ +//; s/ +$//; s/([[:alnum:]])/\L\1/g; s/ +(\w+$)/\.\1/; s/ +/_/g'
 }
 
 to_pascalcase() {
