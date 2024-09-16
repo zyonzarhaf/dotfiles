@@ -35,13 +35,16 @@ rename_file() {
 }
 
 to_camelcase() {
-    rename_file "$1" 's/[^a-zA-Z0-9]+/ /g; s/^ +| +$//g; s/([a-z])([A-Z])/\1 \2/g; s/\b([a-z])/\U\1/g; s/([A-Z]+)([A-Z][a-z])/\1 \2/g; s/\B([A-Z])/\L\1/g; s/^[A-Z]/\L&/; s/ //g'
+  rename_file "$1" 's/[^[:alnum:]]/ /g; s/^ +//; s/ +$//; s/([[:alnum:]])/\L\1/g; s/( \w)/\U\1/g; s/ (\w+$)/\.\L\1/; s/ //g'
 }
 
 to_snakecase() {
-    rename_file "$1" 's/[^a-zA-Z0-9]+/_/g; s/^_+|_+$//g; s/([a-z])([A-Z])/\1_\2/g; s/([A-Z]+)([A-Z][a-z])/\1_\2/g; s/_+/_/g; s/([A-Z])/\L\1/g'
+  rename_file "$1" 's/[^[:alnum:]]/ /g; s/^ +//; s/ +$//; s/([[:alnum:]])/\L\1/g; s/ (\w+$)/\.\1/; s/ +/_/g'
 }
 
+to_pascalcase() {
+  rename_file "$1" 's/[^[:alnum:]]/ /g; s/^ +//; s/ +$//; s/([[:alnum:]])/\L\1/g; s/(\b\w)/\U\1/g; s/ (\w+$)/\.\1/; s/ //g'
+}
 
 main() {
     for p in "$@"; do
@@ -66,6 +69,10 @@ main() {
 
         --snake)
             to_snakecase "$1"
+            ;;
+
+        --pascal)
+            to_pascalcase "$1"
             ;;
 
         *)
