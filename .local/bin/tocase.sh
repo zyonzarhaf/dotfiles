@@ -12,6 +12,7 @@ usage() {
     printf "%-15b\n" "${bold}CASE TYPES:${normal}"
     printf "%s %-15s %s\n" " " "--camel" "Rename file using the camelCase convention"
     printf "%s %-15s %s\n" " " "--snake" "Rename file using the snake_case convention"
+    printf "%s %-15s %s\n" " " "--pascal" "Rename file using the PascalCase convention"
     printf "%-15b\n" "${bold}OPTIONS:${normal}"
     printf "%s %-15s %s\n" " " "--help" "Show this help text"
 }
